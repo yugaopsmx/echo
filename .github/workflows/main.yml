@@ -38,6 +38,14 @@ jobs:
         name: "Build and push"
         uses: docker/build-push-action@v2
         with: 
+          file: ~/Dockerfile.compile
+          push: false
+          tags: "yugaa/test:latest-gr"
+      - 
+        id: docker_build
+        name: "Build and push"
+        uses: docker/build-push-action@v2
+        with: 
           file: ~/Dockerfile
           push: true
           tags: "yugaa/test:latest"
@@ -45,6 +53,6 @@ jobs:
         name: "Image digest"
         run: "echo ${{ steps.docker_build.outputs.digest }}"
 name: "CI to Docker Hub"
-on:
+on: 
   push: 
     branches: master
