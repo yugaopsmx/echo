@@ -2,8 +2,7 @@
 env: 
   GRADLE_OPTS: "-Dorg.gradle.daemon=false -Xmx2g -Xms2g"
 jobs: 
-  push_to_registry: 
-    name: "Gradle"
+  first_job: 
     runs-on: ubuntu-latest
     steps: 
       - 
@@ -41,8 +40,9 @@ jobs:
           file: ~/Dockerfile.compile
           push: false
           tags: "yugaa/test:latest-gr"
-    name: "Push Docker image to Docker Hub"
+  second_job:
     runs-on: ubuntu-latest
+    needs:  first_job
     steps:
       - 
         id: docker_build
