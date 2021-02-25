@@ -18,7 +18,7 @@ jobs:
           password: opsmx1234
           username: yugaa
           push: true
-          tags: "yugaa/test:latest"
+          tags: "latest"
       - 
         name: "Image digest"
         run: "echo ${{ steps.docker_build.outputs.digest }}"
