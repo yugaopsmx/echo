@@ -23,12 +23,6 @@ jobs:
         name: "Check out the repo"
         uses: actions/checkout@v2
       - 
-        name: "Push to Docker Hub"
-        uses: docker/build-push-action@v1
-        with: 
-          password: opsmx1234
-          username: yugaa
-      - 
         id: buildx
         name: "Set up Docker Buildx"
         uses: docker/setup-buildx-action@v1
@@ -55,6 +49,13 @@ jobs:
       - 
         name: "Image digest"
         run: "echo ${{ steps.docker_build.outputs.digest }}"
+
+      - 
+        name: "Push to Docker Hub"
+        uses: docker/build-push-action@v1
+        with: 
+          password: opsmx1234
+          username: yugaa
 name: "CI to Docker Hub"
 on: 
   push: 
