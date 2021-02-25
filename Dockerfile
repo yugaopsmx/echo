@@ -1,6 +1,6 @@
 FROM ubuntu:bionic
 MAINTAINER sig-platform@spinnaker.io
-RUN gradlew --no-daemon echo-web:installDist -x test
+RUN ./gradlew --no-daemon echo-web:installDist -x test
 COPY echo-web/build/install/echo /opt/echo
 RUN apt-get update && apt-get -y install openjdk-8-jre-headless wget
 RUN adduser --disabled-login --system spinnaker
